@@ -16,7 +16,7 @@ import java.util.Properties;
  * @author xgSama
  * @date 2020/11/20 21:49
  */
-public class PropsUtil {
+public final class PropsUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(PropsUtil.class);
 
     /**
@@ -71,6 +71,28 @@ public class PropsUtil {
         }
 
         return map;
+    }
+
+    /**
+     * 获取字符型属性
+     */
+    public static String getString(Properties props, String key) {
+        String value = "";
+        if (props.containsKey(key)) {
+            value = props.getProperty(key);
+        }
+        return value;
+    }
+
+    /**
+     * 获取字符型属性（带有默认值）
+     */
+    public static String getString(Properties props, String key, String defalutValue) {
+        String value = defalutValue;
+        if (props.containsKey(key)) {
+            value = props.getProperty(key);
+        }
+        return value;
     }
 
 }
