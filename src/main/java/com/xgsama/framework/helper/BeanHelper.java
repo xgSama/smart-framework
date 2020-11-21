@@ -15,8 +15,8 @@ import java.util.Set;
  * @date 2020/11/21 13:01
  */
 public final class BeanHelper {
-    private static final Logger LOGGER = LoggerFactory.getLogger(BeanHelper.class);
 
+    // 定义Bean映射（用于存放Bean类与Bean实例的映射关系）
     private static final Map<Class<?>, Object> BEAN_MAP = new HashMap<>();
 
     static {

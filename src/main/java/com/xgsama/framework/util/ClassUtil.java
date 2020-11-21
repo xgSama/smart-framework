@@ -53,6 +53,10 @@ public final class ClassUtil {
         return cls;
     }
 
+    public static Class<?> loadClass(String name) {
+        return loadClass(name, true);
+    }
+
     /**
      * 获取指定包下的所有类
      *
