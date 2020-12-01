@@ -14,15 +14,15 @@ import java.util.Properties;
 public final class ConfigHelper {
     private static final Properties CONFIG_PROPS = PropsUtil.loadProps(ConfigConstant.CONFIG_FILE);
 
-    public static String getAppBasePachage() {
-        return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.APP_ASSET_PATH);
+    public static String getAppBasePackage() {
+        return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.APP_BASE_PACKAGE);
     }
 
     public static String getAppJspPath() {
-        return "";
+        return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.APP_JSP_PATH);
     }
 
     public static String getAppAssetPath() {
-        return "";
+        return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.APP_ASSET_PATH);
     }
 }

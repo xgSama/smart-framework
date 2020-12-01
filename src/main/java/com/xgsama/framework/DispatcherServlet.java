@@ -89,8 +89,8 @@ public class DispatcherServlet extends HttpServlet {
             Method actionMethod = handler.getActionMethod();
             Object result = ReflectionUtil.invokeMethod(controllerBean, actionMethod, param);
             // 处理Action方法返回值
+            // 返回JSP页面
             if (result instanceof View) {
-                // 返回JSP页面
                 View view = (View) result;
                 String path = view.getPath();
 
@@ -98,18 +98,20 @@ public class DispatcherServlet extends HttpServlet {
                     if (path.startsWith("/")) {
                         resp.sendRedirect(req.getContextPath() + path);
                     } else {
-                        Map<String , Object> model = view.getModel();
+                        Map<String, Object> model = view.getModel();
                         for (Map.Entry<String, Object> entry : model.entrySet()) {
                             req.setAttribute(entry.getKey(), entry.getValue());
                         }
-                        req.getRequestDispatcher(ConfigHelper.getAppJspPath()+path).forward(req, resp);
+                        req.getRequestDispatcher(ConfigHelper.getAppJspPath() + path).forward(req, resp);
                     }
                 }
-            } else if (result instanceof Data) {
-                // 返回Json数据
+            }
+            // 返回Json数据
+            else if (result instanceof Data) {
+
                 Data data = (Data) result;
                 Object model = data.getModel();
-                if (model!=null) {
+                if (model != null) {
                     resp.setContentType("application/json");
                     resp.setCharacterEncoding("UTF-8");
                     PrintWriter writer = resp.getWriter();
@@ -119,7 +121,6 @@ public class DispatcherServlet extends HttpServlet {
                     writer.close();
                 }
             }
-
         }
     }
 }
