@@ -1,8 +1,6 @@
 package com.xgsama.framework.helper;
 
 import com.xgsama.framework.util.ReflectionUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,6 +27,7 @@ public final class BeanHelper {
 
     /**
      * 获取Bean映射
+     *
      * @return BEAN_MAP
      */
     public static Map<Class<?>, Object> getBeanMap() {
@@ -45,5 +44,15 @@ public final class BeanHelper {
         }
 
         return (T) BEAN_MAP.get(cls);
+    }
+
+    /**
+     * 设置 Bean 实例
+     *
+     * @param cls
+     * @param obj
+     */
+    public static void setBean(Class<?> cls, Object obj) {
+        BEAN_MAP.put(cls, obj);
     }
 }

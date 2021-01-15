@@ -24,6 +24,7 @@ public final class ClassHelper {
 
     /**
      * 获取应用包名下的所有类
+     *
      * @return CLASS_SET
      */
     public static Set<Class<?>> getClassSet() {
@@ -32,6 +33,7 @@ public final class ClassHelper {
 
     /**
      * 获取所有Service类
+     *
      * @return set
      */
     public static Set<Class<?>> getServiceClassSet() {
@@ -41,6 +43,7 @@ public final class ClassHelper {
 
     /**
      * 获取所有Controller类
+     *
      * @return set
      */
     public static Set<Class<?>> getControllerClassSet() {
@@ -50,6 +53,7 @@ public final class ClassHelper {
 
     /**
      * 获取带有某个注解的类
+     *
      * @param anoType 注解class
      * @return set
      */
@@ -58,6 +62,28 @@ public final class ClassHelper {
 
         for (Class<?> cls : CLASS_SET) {
             if (cls.isAnnotationPresent(anoType)) {
+                classSet.add(cls);
+            }
+        }
+
+        return classSet;
+    }
+
+    /**
+     * 获取应用包名下带有某注解的所有类
+     */
+    public static Set<Class<?>> getClassSetByAnnotation(Class<? extends Annotation> annotationClass) {
+        return getAnnotationClassSet(annotationClass);
+    }
+
+    /**
+     * 获取应用包名下某父类（或接口）的所有子类（实现类）
+     */
+    public static Set<Class<?>> getClassSetBySuper(Class<?> superClass) {
+        Set<Class<?>> classSet = new HashSet<>();
+
+        for (Class<?> cls : CLASS_SET) {
+            if (superClass.isAssignableFrom(cls) && !superClass.equals(cls)) {
                 classSet.add(cls);
             }
         }

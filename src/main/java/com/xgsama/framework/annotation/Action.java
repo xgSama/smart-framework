@@ -7,6 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  * Action
+ * 标注在控制器中的方法上，指定请求方法和路径
  *
  * @author xgSama
  * @date 2020/11/21 10:25

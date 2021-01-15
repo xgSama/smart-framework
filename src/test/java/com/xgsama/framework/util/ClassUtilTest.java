@@ -3,6 +3,7 @@ package com.xgsama.framework.util;
 import org.junit.Test;
 
 import java.io.File;
+import java.nio.charset.StandardCharsets;
 import java.util.Set;
 
 /**
@@ -29,5 +30,6 @@ public class ClassUtilTest {
     public void test1() {
         File file = new File("/F:/xgsama/smart-framework/target/classes/com/xgsama/framework/helper");
         System.out.println(file.getAbsolutePath());
+        System.out.println(StandardCharsets.UTF_8.name());
     }
 }

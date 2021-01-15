@@ -1,9 +1,6 @@
 package com.xgsama.framework;
 
-import com.xgsama.framework.helper.BeanHelper;
-import com.xgsama.framework.helper.ClassHelper;
-import com.xgsama.framework.helper.ControllerHelper;
-import com.xgsama.framework.helper.IocHelper;
+import com.xgsama.framework.helper.*;
 import com.xgsama.framework.util.ClassUtil;
 
 /**
@@ -17,6 +14,9 @@ public final class HelpLoader {
         Class<?>[] classList = {
                 ClassHelper.class,
                 BeanHelper.class,
+                // AopHelper要在IocHelper之前加载，因为首先要通过AopHelper获取代理对象
+                // 然后才能通过IocHelper进行依赖注入
+                AopHelper.class,
                 IocHelper.class,
                 ControllerHelper.class
         };
