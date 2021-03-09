@@ -8,6 +8,8 @@ import com.xgsama.framework.helper.BeanHelper;
 import com.xgsama.framework.helper.ConfigHelper;
 import com.xgsama.framework.helper.ControllerHelper;
 import com.xgsama.framework.util.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -32,8 +34,12 @@ import java.util.Map;
  */
 @WebServlet(urlPatterns = "/*", loadOnStartup = 0)
 public class DispatcherServlet extends HttpServlet {
+
+    private final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
+
     @Override
     public void init(ServletConfig config) throws ServletException {
+        logger.info("框架初始化开始。。。。。。。。。。。。。。。。。");
         // 初始化相关Helper类
         HelpLoader.init();
         // 获取ServletContext对象（用于注册Servlet）

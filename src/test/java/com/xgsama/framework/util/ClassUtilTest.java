@@ -15,7 +15,8 @@ import java.util.Set;
 public class ClassUtilTest {
     @Test
     public void test() {
-        Set<Class<?>> classSet = ClassUtil.getClassSet("com.xgsama.framework");
+//        Set<Class<?>> classSet = ClassUtil.getClassSet("com.xgsama.framework");
+        Set<Class<?>> classSet = ClassUtil.getClassSet("F:\\plugins\\maven\\Remaven\\com\\aliyun\\aliyun-java-sdk-core\\3.3.1\\aliyun-java-sdk-core-3.3.1.jar");
 
         if (classSet.isEmpty()) {
             System.out.println("empty");

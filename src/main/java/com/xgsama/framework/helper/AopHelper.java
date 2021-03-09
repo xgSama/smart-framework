@@ -1,6 +1,7 @@
 package com.xgsama.framework.helper;
 
 import com.xgsama.framework.annotation.Aspect;
+import com.xgsama.framework.proxy.AspectProxy;
 import com.xgsama.framework.proxy.Proxy;
 import com.xgsama.framework.proxy.ProxyManager;
 import org.slf4j.Logger;
@@ -55,7 +56,7 @@ public class AopHelper {
      */
     private static Map<Class<?>, Set<Class<?>>> createProxyMap() throws Exception {
         Map<Class<?>, Set<Class<?>>> proxyMap = new HashMap<>();
-        Set<Class<?>> proxyClassSet = ClassHelper.getClassSetBySuper(Aspect.class);
+        Set<Class<?>> proxyClassSet = ClassHelper.getClassSetBySuper(AspectProxy.class);
 
         for (Class<?> proxyClass : proxyClassSet) {
             if (proxyClass.isAnnotationPresent(Aspect.class)) {

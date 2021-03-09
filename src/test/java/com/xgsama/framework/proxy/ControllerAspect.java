@@ -20,12 +20,14 @@ public class ControllerAspect extends AspectProxy {
 
     private long begin;
 
+
     @Override
     public void before(Class<?> cls, Method method, Object[] params) throws Throwable {
         LOGGER.debug("================ BEGIN ================");
         LOGGER.debug(String.format("class: %s", cls.getName()));
         LOGGER.debug(String.format("method: %s", method.getName()));
         begin = Instant.now().toEpochMilli();
+
     }
 
     @Override
